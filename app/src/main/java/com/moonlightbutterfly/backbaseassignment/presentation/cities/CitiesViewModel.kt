@@ -6,7 +6,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.moonlightbutterfly.backbaseassignment.presentation.CitiesPagingSource
-import com.moonlightbutterfly.core.models.City
 import com.moonlightbutterfly.core.usecases.GetCitiesUseCase
 import javax.inject.Inject
 
@@ -14,7 +13,7 @@ class CitiesViewModel @Inject constructor(getCitiesUseCase: GetCitiesUseCase) : 
 
     private var query: String? = null
 
-    val flow = Pager(
+    val citiesFlow = Pager(
         PagingConfig(PAGE_SIZE)
     ) {
         CitiesPagingSource(getCitiesUseCase, query, PAGE_SIZE)

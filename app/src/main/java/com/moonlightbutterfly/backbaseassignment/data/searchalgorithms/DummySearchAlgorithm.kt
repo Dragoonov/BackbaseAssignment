@@ -3,7 +3,10 @@ package com.moonlightbutterfly.backbaseassignment.data.searchalgorithms
 import com.moonlightbutterfly.core.models.City
 import javax.inject.Inject
 
-class DummySearchAlgorithm @Inject constructor(): SearchAlgorithm {
+/**
+ * Dummy search algorithm implementation that uses built in Kotlin functional methods.
+ */
+class DummySearchAlgorithm @Inject constructor() : SearchAlgorithm {
 
     private lateinit var collection: List<City>
 
@@ -16,7 +19,7 @@ class DummySearchAlgorithm @Inject constructor(): SearchAlgorithm {
     }
 
     override fun filterCollection(
-        query: String
+        query: String,
     ): List<City> {
         return collection.filter {
             it.cityName.startsWith(query, true)

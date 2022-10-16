@@ -6,5 +6,5 @@ data class City(
     val id: Long,
     val countryCode: String,
     val cityName: String,
-    val coordinates: Coordinates
-): Serializable
+    val coordinates: Coordinates,
+) : Serializable

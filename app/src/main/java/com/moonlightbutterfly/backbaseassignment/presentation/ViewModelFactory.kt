@@ -6,8 +6,8 @@ import com.moonlightbutterfly.backbaseassignment.presentation.cities.CitiesViewM
 import javax.inject.Inject
 import javax.inject.Provider
 
-class ViewModelFactory @Inject constructor (
-    private val citiesViewModelProvider: Provider<CitiesViewModel>
+class ViewModelFactory @Inject constructor(
+    private val citiesViewModelProvider: Provider<CitiesViewModel>,
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")

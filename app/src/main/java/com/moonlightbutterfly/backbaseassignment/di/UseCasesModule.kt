@@ -10,7 +10,7 @@ class UseCasesModule {
 
     @Provides
     fun provideGetCitiesUseCase(
-        citiesRepository: CitiesRepository
+        citiesRepository: CitiesRepository,
     ): GetCitiesUseCase {
         return GetCitiesUseCase(citiesRepository)
     }

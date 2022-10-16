@@ -1,7 +1,7 @@
 package com.moonlightbutterfly.backbaseassignment.di
 
-import com.moonlightbutterfly.backbaseassignment.data.searchalgorithms.DummySearchAlgorithm
 import com.moonlightbutterfly.backbaseassignment.data.searchalgorithms.BinarySearchAlgorithm
+import com.moonlightbutterfly.backbaseassignment.data.searchalgorithms.DummySearchAlgorithm
 import com.moonlightbutterfly.backbaseassignment.data.searchalgorithms.SearchAlgorithm
 import dagger.Binds
 import dagger.Module

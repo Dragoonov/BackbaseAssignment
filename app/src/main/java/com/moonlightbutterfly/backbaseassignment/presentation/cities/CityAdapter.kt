@@ -11,7 +11,7 @@ class CityAdapter(diffCallback: DiffUtil.ItemCallback<City>) :
     PagingDataAdapter<City, CityViewHolder>(diffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): CityViewHolder {
         val binding: CityCardBinding =
             CityCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)

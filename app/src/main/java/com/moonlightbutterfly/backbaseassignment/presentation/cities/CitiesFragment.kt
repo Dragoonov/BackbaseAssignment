@@ -24,7 +24,7 @@ class CitiesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         parent: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         val binding = FragmentCitiesBinding.inflate(inflater)
         val cityAdapter = CityAdapter(CityComparator)
@@ -37,7 +37,7 @@ class CitiesFragment : Fragment() {
             cityAdapter.refresh()
         }
         lifecycleScope.launch {
-            viewModel.flow.collectLatest { pagingData ->
+            viewModel.citiesFlow.collectLatest { pagingData ->
                 cityAdapter.submitData(pagingData)
             }
         }

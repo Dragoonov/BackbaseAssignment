@@ -15,7 +15,8 @@ class CityViewHolder(private val binding: CityCardBinding) : RecyclerView.ViewHo
                 }
             }
             title.text = "${city?.cityName}, ${city?.countryCode}"
-            subtitle.text = "Latitude: ${city?.coordinates?.latitude}, Longitude: ${city?.coordinates?.longitude}"
+            subtitle.text =
+                "Latitude: ${city?.coordinates?.latitude}, Longitude: ${city?.coordinates?.longitude}"
         }
     }
 }

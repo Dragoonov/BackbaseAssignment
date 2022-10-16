@@ -10,18 +10,18 @@ class BinarySearchAlgorithmTest {
     private val algorithm = BinarySearchAlgorithm()
 
     private val testCollection = listOf(
-        City(0,"", "Lask", Coordinates(.0,.0)),
-        City(0,"", "slh", Coordinates(.0,.0)),
-        City(0,"", "aadsfk", Coordinates(.0,.0)),
-        City(0,"", "gsrtk", Coordinates(.0,.0)),
-        City(0,"", "lkjf", Coordinates(.0,.0)),
-        City(0,"", "zkjas", Coordinates(.0,.0)),
-        City(0,"", "ewq", Coordinates(.0,.0)),
-        City(0,"", "hjg", Coordinates(.0,.0)),
-        City(0,"", "lef", Coordinates(.0,.0)),
-        City(0,"", "af", Coordinates(.0,.0)),
-        City(0,"", "234 kh", Coordinates(.0,.0)),
-        City(0,"", "kkkk", Coordinates(.0,.0)),
+        City(0, "", "Lask", Coordinates(.0, .0)),
+        City(0, "", "slh", Coordinates(.0, .0)),
+        City(0, "", "aadsfk", Coordinates(.0, .0)),
+        City(0, "", "gsrtk", Coordinates(.0, .0)),
+        City(0, "", "lkjf", Coordinates(.0, .0)),
+        City(0, "", "zkjas", Coordinates(.0, .0)),
+        City(0, "", "ewq", Coordinates(.0, .0)),
+        City(0, "", "hjg", Coordinates(.0, .0)),
+        City(0, "", "lef", Coordinates(.0, .0)),
+        City(0, "", "af", Coordinates(.0, .0)),
+        City(0, "", "234 kh", Coordinates(.0, .0)),
+        City(0, "", "kkkk", Coordinates(.0, .0)),
     )
 
     @Before

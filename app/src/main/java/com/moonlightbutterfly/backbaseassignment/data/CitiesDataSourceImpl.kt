@@ -8,12 +8,11 @@ import com.moonlightbutterfly.backbaseassignment.data.searchalgorithms.SearchAlg
 import com.moonlightbutterfly.core.data.CitiesDataSource
 import com.moonlightbutterfly.core.models.City
 import com.moonlightbutterfly.core.models.Coordinates
-import java.lang.IndexOutOfBoundsException
 
 class CitiesDataSourceImpl(
     context: Context,
-    private val searchAlgorithm: SearchAlgorithm
-): CitiesDataSource  {
+    private val searchAlgorithm: SearchAlgorithm,
+) : CitiesDataSource {
 
     init {
         context.assets.open(CITIES_FILENAME).readBytes().decodeToString().let {
@@ -42,12 +41,12 @@ class CitiesDataSourceImpl(
         return searchAlgorithm.filterCollection(query).getSubList(page, pageSize)
     }
 
-    private fun<T> List<T>.getSubList(page: Int, pageSize: Int): List<T> {
-        val firstIndex = (page-1) * pageSize
+    private fun List<City>.getSubList(page: Int, pageSize: Int): List<City> {
+        val firstIndex = (page - 1) * pageSize
         val lastIndex = pageSize * page
         return when {
-            this.size-1 < firstIndex -> emptyList()
-            this.size-1 < lastIndex -> this
+            this.size - 1 < firstIndex -> emptyList()
+            this.size - 1 < lastIndex -> this
             else -> this.subList(firstIndex, lastIndex)
         }
     }

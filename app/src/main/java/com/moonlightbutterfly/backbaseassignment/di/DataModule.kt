@@ -14,7 +14,7 @@ class DataModule {
     @Provides
     fun provideCitiesDataSource(
         context: Context,
-        @FastAlgorithm algorithm: SearchAlgorithm
+        @FastAlgorithm algorithm: SearchAlgorithm,
     ): CitiesDataSource {
         return CitiesDataSourceImpl(context, algorithm)
     }

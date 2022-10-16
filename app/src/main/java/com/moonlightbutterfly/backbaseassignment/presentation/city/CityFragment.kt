@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.moonlightbutterfly.backbaseassignment.R
 import com.moonlightbutterfly.backbaseassignment.databinding.FragmentCityBinding
-import com.moonlightbutterfly.core.models.City
 
 
 class CityFragment : Fragment() {
@@ -18,7 +17,7 @@ class CityFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         parent: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         val binding = FragmentCityBinding.inflate(inflater)
         binding.cityInfo.text = getString(R.string.map_info, args.city)
