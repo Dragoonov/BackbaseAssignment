@@ -19,7 +19,7 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
     }
 
     override fun filterCollection(query: String): List<City> {
-        return queryMap.getOrPut(query) {
+        return queryMap.getOrPut(query.lowercase()) {
             val firstIndex = findFirstMatchingIndex(query)
             if (firstIndex < 0) {
                 return emptyList()
@@ -32,13 +32,16 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
     private fun findFirstMatchingIndex(query: String): Int {
         var firstIndex = -1
         var tempCollection = collection.copyOf()
+        if (tempCollection[0].cityName.startsWith(query, true)) {
+            return 0
+        }
         var middleIndex = tempCollection.size / 2
         var middleItem = tempCollection[middleIndex]
         var offset = 0
         while (firstIndex < 0 && tempCollection.size >= 2) {
             val comparison = query.compareTo(middleItem.cityName, true)
             if (comparison > 0) {
-                if (tempCollection[middleIndex + 1].cityName.startsWith(query, true)) {
+                if (collection[middleIndex + 1 + offset].cityName.startsWith(query, true)) {
                     firstIndex = middleIndex + 1 + offset
                 } else {
                     tempCollection = tempCollection.sliceArray(IntRange(middleIndex,
@@ -59,6 +62,9 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
     private fun findLastMatchingIndex(query: String): Int {
         var lastIndex = -1
         var tempCollection = collection.copyOf()
+        if (tempCollection[tempCollection.size-1].cityName.startsWith(query, true)) {
+            return collection.size-1
+        }
         var middleIndex = tempCollection.size / 2
         var middleItem = tempCollection[middleIndex]
         var offset = 0
@@ -71,7 +77,7 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
                 middleIndex = tempCollection.size / 2
                 middleItem = tempCollection[middleIndex]
             } else {
-                if (tempCollection[middleIndex - 1].cityName.startsWith(query, true)) {
+                if (collection[middleIndex - 1 + offset].cityName.startsWith(query, true)) {
                     lastIndex = middleIndex - 1 + offset
                 } else {
                     tempCollection = tempCollection.sliceArray(IntRange(0, middleIndex - 1))
