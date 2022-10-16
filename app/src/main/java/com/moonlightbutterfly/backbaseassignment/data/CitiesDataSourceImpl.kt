@@ -27,7 +27,10 @@ class CitiesDataSourceImpl(
             }
         }.also {
             searchAlgorithm.loadCollection(it) { city1, city2 ->
-                city1.cityName.compareTo(city2.cityName, true)
+                val result = city1.cityName.compareTo(city2.cityName, true)
+                if (result == 0) {
+                    city1.countryCode.compareTo(city2.countryCode, true)
+                } else result
             }
         }
     }

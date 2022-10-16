@@ -3,7 +3,7 @@ package com.moonlightbutterfly.backbaseassignment.data.searchalgorithms
 import com.moonlightbutterfly.core.models.City
 import javax.inject.Inject
 
-class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
+class BinarySearchAlgorithm @Inject constructor() : SearchAlgorithm {
 
     private lateinit var collection: Array<City>
     private lateinit var comparator: Comparator<City>
@@ -38,20 +38,25 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
         var middleIndex = tempCollection.size / 2
         var middleItem = tempCollection[middleIndex]
         var offset = 0
-        while (firstIndex < 0 && tempCollection.size >= 2) {
+        var shouldBreak = false
+        while (firstIndex < 0 && !shouldBreak) {
+            if (tempCollection.size == 1) {
+                shouldBreak = true
+            }
             val comparison = query.compareTo(middleItem.cityName, true)
             if (comparison > 0) {
                 if (collection[middleIndex + 1 + offset].cityName.startsWith(query, true)) {
                     firstIndex = middleIndex + 1 + offset
                 } else {
-                    tempCollection = tempCollection.sliceArray(IntRange(middleIndex,
-                        tempCollection.size - 1))
+                    tempCollection = tempCollection.sliceArray(
+                        IntRange(middleIndex, (tempCollection.size - 1).coerceAtLeast(0))
+                    )
                     offset += middleIndex
                     middleIndex = tempCollection.size / 2
                     middleItem = tempCollection[middleIndex]
                 }
             } else {
-                tempCollection = tempCollection.sliceArray(IntRange(0, middleIndex - 1))
+                tempCollection = tempCollection.sliceArray(IntRange(0, (middleIndex - 1).coerceAtLeast(0)))
                 middleIndex = tempCollection.size / 2
                 middleItem = tempCollection[middleIndex]
             }
@@ -68,11 +73,15 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
         var middleIndex = tempCollection.size / 2
         var middleItem = tempCollection[middleIndex]
         var offset = 0
-        while (lastIndex < 0 && tempCollection.size >= 2) {
+        var shouldBreak = false
+        while (lastIndex < 0 && !shouldBreak) {
+            if (tempCollection.size == 1) {
+                shouldBreak = true
+            }
             val comparison = query.compareTo(middleItem.cityName, true)
             if (comparison > 0 || tempCollection[middleIndex].cityName.startsWith(query, true)) {
                 tempCollection = tempCollection.sliceArray(IntRange(middleIndex,
-                    tempCollection.size - 1))
+                    (tempCollection.size - 1).coerceAtLeast(0)))
                 offset += middleIndex
                 middleIndex = tempCollection.size / 2
                 middleItem = tempCollection[middleIndex]
@@ -80,7 +89,7 @@ class FastSearchAlgorithm @Inject constructor() : SearchAlgorithm {
                 if (collection[middleIndex - 1 + offset].cityName.startsWith(query, true)) {
                     lastIndex = middleIndex - 1 + offset
                 } else {
-                    tempCollection = tempCollection.sliceArray(IntRange(0, middleIndex - 1))
+                    tempCollection = tempCollection.sliceArray(IntRange(0, (middleIndex - 1).coerceAtLeast(0)))
                     middleIndex = tempCollection.size / 2
                     middleItem = tempCollection[middleIndex]
                 }
